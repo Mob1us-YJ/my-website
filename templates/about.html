@@ -1,0 +1,337 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+    .about-hobby-layout {
+        display: flex;
+        gap: 2.5rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    .about-sidebar {
+        min-width: 160px;
+        position: sticky;
+        top: 2rem;
+        height: fit-content;
+    }
+    .about-nav-link {
+        font-weight: 600;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.3s;
+        padding: 0.5rem 0;
+        border-left: 3px solid transparent;
+        padding-left: 1rem;
+    }
+    .about-nav-link:hover,
+    .about-nav-link.active {
+        color: var(--text-primary);
+        border-left-color: var(--primary-color);
+    }
+    .about-card {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.6s ease forwards;
+    }
+    .about-image {
+        width: 220px;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 12px;
+        background: #222;
+        transition: transform 0.3s;
+    }
+    .about-image:hover {
+        transform: scale(1.05);
+    }
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @media (max-width: 768px) {
+        .about-hobby-layout {
+            flex-direction: column;
+        }
+        .about-sidebar {
+            position: static;
+            padding: 1rem 0;
+        }
+        .about-sidebar nav {
+            flex-direction: row;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+        .about-nav-link {
+            border-left: none;
+            border-bottom: 3px solid transparent;
+            padding: 0.5rem;
+        }
+        .about-nav-link:hover,
+        .about-nav-link.active {
+            border-left-color: transparent;
+            border-bottom-color: var(--primary-color);
+        }
+    }
+    
+    /* 视频网格布局 */
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .video-card {
+        position: relative;
+        aspect-ratio: 16/9;
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--card-bg);
+        transition: transform 0.3s ease;
+    }
+    
+    .video-card:hover {
+        transform: scale(1.02);
+    }
+    
+    .video-thumbnail {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* 横幅图片网格：每行2张 */
+    .photo-grid-landscape {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+    .photo-item-landscape {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    .photo-image-landscape {
+        width: 100%;
+        aspect-ratio: 3/2;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        background: #eee;
+    }
+    .photo-image-landscape:hover {
+        transform: scale(1.02);
+    }
+
+    /* 竖幅图片网格：每行3张 */
+    .photo-grid-portrait {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+    .photo-item-portrait {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    .photo-image-portrait {
+        width: 100%;
+        aspect-ratio: 2/3;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        background: #eee;
+    }
+    .photo-image-portrait:hover {
+        transform: scale(1.02);
+    }
+
+    .photo-caption {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        text-align: center;
+        padding: 0 0.5rem;
+    }
+
+    @media (max-width: 900px) {
+        .photo-grid-landscape {
+            grid-template-columns: 1fr;
+        }
+        .photo-grid-portrait {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 600px) {
+        .photo-grid-landscape, .photo-grid-portrait {
+            grid-template-columns: 1fr;
+        }
+    }
+    .personal-intro {
+        max-width: 700px;
+        margin: 0 auto 2.5rem auto;
+        text-align: center;
+        font-size: 1.15rem;
+        color: var(--text-secondary);
+    }
+    .personal-section-title {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .personal-section-desc {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: var(--text-secondary);
+    }
+</style>
+
+<div class="about-hobby-layout">
+    <!-- 左侧分区导航 -->
+    <aside class="about-sidebar">
+        <nav style="display:flex;flex-direction:column;gap:1.2rem;">
+            <a href="#video-editing" class="about-nav-link">Flim Editing</a>
+            <a href="#travel-photography" class="about-nav-link">Travel</a>
+            <a href="#sports" class="about-nav-link">Sports</a>
+        </nav>
+    </aside>
+    <!-- 右侧内容区 -->
+    <main class="about-main" style="flex:1;">
+        <!-- 总简介 -->
+        <div class="personal-intro">
+            Apart from being an engineer, I also love to record, create, and explore the world.
+        </div>
+        <!-- 影视混剪 -->
+        <section id="video-editing" class="about-card card" style="margin-bottom:2.5rem;">
+            <h2 class="personal-section-title">Film Editing</h2>
+            <p class="personal-section-desc">Film mix is telling a new story.</p>
+            <div class="video-grid">
+                <!-- BE -->
+                <a href="https://www.bilibili.com/video/BV1M6AxepEG1/" class="video-card" target="_blank">
+                    <img src="/static/images/video_thumbnails/be.jpg" alt="BE in films" class="video-thumbnail">
+                </a>
+
+                <!--  -->
+                <a href="https://www.bilibili.com/video/BV1pT411u7ev/" class="video-card" target="_blank">
+                    <img src="/static/images/video_thumbnails/joker.jpg" alt="Joker" class="video-thumbnail">
+                </a>
+
+                <!--  -->
+                <a href="https://www.bilibili.com/video/BV1nq4y1P7EP/" class="video-card" target="_blank">
+                    <img src="/static/images/video_thumbnails/tdk.png" alt="Batman" class="video-thumbnail">
+                </a>
+
+                <!--  -->
+                <a href="https://www.bilibili.com/video/BV1gh411z7UT/" class="video-card" target="_blank">
+                    <img src="/static/images/video_thumbnails/pb.jpg" alt="Prison Break" class="video-thumbnail">
+                </a>
+            </div>
+        </section>
+        <!-- 旅游拍摄 -->
+        <section id="travel-photography" class="about-card card" style="margin-bottom:2.5rem;">
+            <h2 class="personal-section-title">Travel</h2>
+            <p class="personal-section-desc">Photograpy is capturing memories.</p>
+            
+            <!-- 横幅图片：每行2张 -->
+            <div class="photo-grid-landscape">
+                <div class="photo-item-landscape">
+                    <img src="/static/images/travel/napoli.jpg" alt="naples" class="photo-image-landscape">
+                    <p class="photo-caption">Naples - Italy</p>
+                </div>
+                <div class="photo-item-landscape">
+                    <img src="/static/images/travel/copen.jpg" alt="copenhagen" class="photo-image-landscape">
+                    <p class="photo-caption">Copenhagen - Denmark</p>
+                </div>
+            </div>
+
+            <!-- 竖幅图片：每行3张 -->
+            <div class="photo-grid-portrait">
+                <div class="photo-item-portrait">
+                    <img src="/static/images/travel/roma.jpg" alt="rome" class="photo-image-portrait">
+                    <p class="photo-caption">Rome - Italy</p>
+                </div>
+                <div class="photo-item-portrait">
+                    <img src="/static/images/travel/Am.jpg" alt="amsterdam" class="photo-image-portrait">
+                    <p class="photo-caption">Amsterdam - Netherlands</p>
+                </div>
+                <div class="photo-item-portrait">
+                    <img src="/static/images/travel/chongqing.jpg" alt="CHONGQING" class="photo-image-portrait">
+                    <p class="photo-caption">Chongqing - China</p>
+                </div>
+            </div>
+            <div class="photo-grid-landscape">
+                <div class="photo-item-landscape">
+                    <img src="/static/images/travel/Venice1.jpg" alt="Venice" class="photo-image-landscape">
+                    <p class="photo-caption">Venice - Italy</p>
+                </div>
+                <div class="photo-item-landscape">
+                    <img src="/static/images/travel/Prague.jpg" alt="Prague" class="photo-image-landscape">
+                    <p class="photo-caption">Prague - Czech</p>
+                </div>
+            </div>
+            <div class="photo-grid-landscape">
+                <div class="photo-item-landscape">
+                    <img src="/static/images/travel/Riga2.jpg" alt="RIGA" class="photo-image-landscape">
+                    <p class="photo-caption">Riga - Latvia</p>
+                </div>
+                <div class="photo-item-landscape">
+                    <img src="/static/images/travel/Tibet.jpg" alt="Tibet" class="photo-image-landscape">
+                    <p class="photo-caption">Tibet - China</p>
+                </div>
+            </div>
+        </section>
+        <!-- 运动 -->
+        <section id="sports" class="about-card card">
+            <h2 class="personal-section-title">Sports</h2>
+            <p class="personal-section-desc"></p>
+            <p style="color:var(--text-secondary);font-size:0.98rem;margin-top:0.7rem;text-align:center;">Snowborad, Badminton, and still exploring...</p>
+            <div style="display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;margin-top:1.2rem;">
+                <img src="/static/images/sports/snowborad.jpg" alt="Snowborad" class="about-image" loading="lazy">
+                <img src="/static/images/sports/snow2.jpg" alt="snow2" class="about-image" loading="lazy">
+                <img src="/static/images/sports/badminton.jpg" alt="Badminton" class="about-image" loading="lazy">
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 处理导航链接的激活状态
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.about-nav-link');
+    
+    function setActiveLink() {
+        let currentSection = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - 150) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').slice(1) === currentSection) {
+                link.classList.add('active');
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', setActiveLink);
+    setActiveLink(); // 初始化激活状态
+});
+</script>
+{% endblock %}

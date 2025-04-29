@@ -1,0 +1,499 @@
+/* ====== 全局暗色主题变量 ====== */
+:root {
+    --primary-color: #4f8cff;
+    --secondary-color: #181a20;
+    --background-color: #101114;
+    --card-bg: #181a20;
+    --card-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    --text-color: #f5f6fa;
+    --text-secondary: #b0b3b8;
+    --border-radius: 18px;
+    --tag-bg: #23262f;
+    --tag-color: #b0b3b8;
+    --tag-border: #33364a;
+    --nav-bg: #181a20;
+    --footer-bg: #181a20;
+    --btn-bg: #23262f;
+    --btn-hover: #4f8cff;
+    --btn-color: #f5f6fa;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+}
+
+header, nav {
+    background: var(--nav-bg);
+    color: var(--text-color);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1.2rem;
+    border-radius: var(--border-radius);
+    transition: background 0.2s, color 0.2s;
+}
+nav a:hover, nav a.active {
+    background: var(--btn-hover);
+    color: #fff;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2.5rem auto;
+    padding: 0 2rem;
+}
+
+footer {
+    background: var(--footer-bg);
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 1.5rem 0 1rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid #23262f;
+}
+
+/* ====== 卡片式布局 ====== */
+.card, .experience-item, .education-item {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 2rem 2rem 1.5rem 2rem;
+    margin-bottom: 2.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover, .experience-item:hover, .education-item:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.7);
+}
+
+/* ====== 标签样式 ====== */
+.tech-tags, .skills-list ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin: 1rem 0 0 0;
+}
+.tech-tag, .skills-list li, .filter-btn {
+    background: var(--tag-bg);
+    color: var(--tag-color);
+    border: 1px solid var(--tag-border);
+    border-radius: 999px;
+    padding: 0.3rem 1.1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin: 0.2rem 0;
+    transition: background 0.2s, color 0.2s;
+}
+.filter-btn.active, .filter-btn:hover {
+    background: var(--btn-hover);
+    color: #fff;
+    border-color: var(--btn-hover);
+}
+
+/* ====== 标题与文本 ====== */
+h1, h2, h3 {
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+}
+h1 {
+    font-size: 2.2rem;
+}
+h2 {
+    font-size: 1.4rem;
+}
+h3 {
+    font-size: 1.1rem;
+}
+p, span, li {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+/* ====== 个人头像 ====== */
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--btn-hover);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+/* ====== 响应式 ====== */
+@media (max-width: 900px) {
+    main {
+        padding: 0 1rem;
+    }
+    .card, .experience-item, .education-item {
+        padding: 1.2rem 1rem 1rem 1rem;
+    }
+}
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* ====== 其他细节优化 ====== */
+::-webkit-scrollbar {
+    width: 8px;
+    background: #23262f;
+}
+::-webkit-scrollbar-thumb {
+    background: #23262f;
+    border-radius: 8px;
+}
+
+a.read-more, a.see-more {
+    color: var(--btn-hover);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+a.read-more:hover, a.see-more:hover {
+    color: #fff;
+    background: var(--btn-hover);
+    border-radius: 999px;
+    padding: 0.2rem 1rem;
+}
+
+/* ====== 博客页面、教育、经历等细节可后续细化 ====== */
+
+/* 主页样式 */
+.hero {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* 关于页面的图片样式 */
+.profile-pic {
+    width: 400px;       /* 设置宽度 */
+    height: auto;       /* 高度自动保持比例 */
+
+}
+/* About页面基础样式 */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.intro-section {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #000;
+}
+
+/* 经历部分样式 */
+.experience-section {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.experience-item {
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.experience-header {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.experience-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.experience-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.experience-role {
+    font-weight: 600;
+    color: #555;
+}
+
+.experience-date {
+    color: #777;
+}
+
+.experience-details p {
+    margin: 0.8rem 0;
+    line-height: 1.6;
+    color: #444;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tech-tag {
+    background: #e0e0e0;
+    color: #333;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .experience-item {
+        padding: 1rem;
+    }
+
+    .experience-header h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* 教育经历样式 */
+.education-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.education-item {
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.education-item h3 {
+    margin: 0 0 0.5rem;
+}
+
+.institution {
+    font-weight: 500;
+    margin: 0 0 0.3rem;
+}
+
+.year {
+    color: #666;
+    margin: 0;
+}
+
+/* 教育页面样式 */
+.education-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.education-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: var(--primary-color);
+}
+
+.education-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.education-header {
+    margin-bottom: 1rem;
+}
+
+.education-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    color: #666;
+}
+
+/* 博客页面样式 */
+/* 博客页面样式 */
+
+/* ====== 纵向时间线样式（Education & Experience） ====== */
+.timeline-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 0 3rem 0;
+}
+.timeline {
+    position: relative;
+    margin: 3rem auto 0 auto;
+    padding-left: 0;
+    max-width: 700px;
+}
+.timeline:before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--btn-hover);
+    border-radius: 2px;
+    z-index: 0;
+}
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 3.5rem;
+    position: relative;
+}
+.timeline-dot {
+    width: 20px;
+    height: 20px;
+    background: var(--background-color);
+    border: 4px solid var(--btn-hover);
+    border-radius: 50%;
+    position: relative;
+    left: 20px;
+    top: 0.2rem;
+    z-index: 2;
+    box-shadow: 0 0 0 4px var(--card-bg);
+}
+.timeline-content {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 1.5rem 2rem;
+    margin-left: 60px;
+    min-width: 0;
+    flex: 1;
+    position: relative;
+}
+.timeline-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.timeline-title-row h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #fff;
+}
+.timeline-date {
+    color: var(--btn-hover);
+    font-size: 1rem;
+    font-weight: 600;
+}
+.timeline-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
+}
+.timeline-degree {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+.timeline-courses {
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+    margin-top: 0.2rem;
+}
+.timeline-desc {
+    margin: 0.7rem 0 0 0;
+    padding-left: 1.2rem;
+    color: var(--text-secondary);
+    font-size: 1.02rem;
+}
+@media (max-width: 700px) {
+    .timeline-section { padding: 0.5rem 0 2rem 0; }
+    .timeline { max-width: 98vw; }
+    .timeline-content { padding: 1rem 0.7rem; margin-left: 50px; }
+    .timeline-dot { left: 10px; }
+}
+
+/* ====== 技能标签优化 ====== */
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem; /* 每组之间的竖直间距 */
+}
+.skills-list > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.7em 0.7em; /* 行间距0.7em，列间距0.7em，保证竖直间距统一 */
+    margin-bottom: 0 !important;
+}
+.tech-tag {
+    display: inline-block;
+    background: #e0e0e0;
+    color: #222;
+    border-radius: 2em;
+    padding: 0.4em 1.2em;
+    font-size: 0.8rem;
+    margin: 0;
+    white-space: nowrap;      /* 保证整个标签不被拆分 */
+    word-break: keep-all;     /* 防止长单词断开 */
+    box-sizing: border-box;
+    vertical-align: middle;
+    transition: background 0.2s;
+}

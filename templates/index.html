@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% from "macros.html" import project_card %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="hero" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;">
+    <img src="{{ url_for('static', filename='images/selfabout.jpg') }}" alt="Profile Photo" class="profile-pic" style="box-shadow:0 0 32px #4f8cff55; border:4px solid #23262f; margin-bottom:2rem;">
+    <h1 style="text-align:center;max-width:600px;">JING YANG</h1>
+    <p style="text-align:center;max-width:600px;font-size:1.2rem;color:var(--text-secondary);margin-bottom:2.5rem;">I focus on embedded systems and intelligent hardware-software integration, passionate about solving real-world problems through coding and engineering. Currently pursuing a joint master's degree in Embedded Systems in Europe, with extensive project and international teamwork experience.</p>
+</section>
+
+<section class="skills-section" style="max-width:800px;margin:0 auto;padding:2rem;">
+    <h2 style="text-align:center;margin-bottom:2rem;">Skills</h2>
+    <div class="skills-list">
+        <div style="margin-bottom:1.2rem;">
+            <strong style="color:#fff;">Coding:</strong>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">C</span>
+            <span class="tech-tag">C++</span>
+            <span class="tech-tag">Matlab</span>
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Verilog</span>
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">Git</span>
+            
+        </div>
+        <div style="margin-bottom:1.2rem;">
+            <strong style="color:#fff;">Hardware Skills:</strong>
+            <span class="tech-tag">Vehicular Systems</span>
+            <span class="tech-tag">Hardware Testing</span>
+            <span class="tech-tag">Circuit Design</span>
+            <span class="tech-tag">System Verification</span>
+            <span class="tech-tag">PCB Layout</span>
+            <span class="tech-tag">AI Deployment and Training</span>
+            <span class="tech-tag">System Design</span>
+            <span class="tech-tag">BMS Design</span>
+            <span class="tech-tag">CAN/LIN/Ethernet</span>
+            <span class="tech-tag">I2C/SPI/UART</span>
+            <span class="tech-tag">TCP/UDP</span>
+            <span class="tech-tag">HTTP/MQTT/CoAP</span>
+        </div>
+        <div style="margin-bottom:1.2rem;">
+            <strong style="color:#fff;">Platforms:</strong>
+            <span class="tech-tag">Linux</span>
+            <span class="tech-tag">Windows</span>
+            <span class="tech-tag">Arduino</span>
+            <span class="tech-tag">FreeRTOS</span>
+            <span class="tech-tag">Raspberry Pi</span>
+            <span class="tech-tag">STM32</span>
+            <span class="tech-tag">ESP32</span>
+            <span class="tech-tag">Xilinx</span>
+            <span class="tech-tag">SoC</span>
+            <span class="tech-tag">FPGA</span>
+        </div>
+        <div>
+            <strong style="color:#fff;">Languages:</strong>
+            <span class="tech-tag">Mandarin (Native)</span>
+            <span class="tech-tag">English (C1)</span>
+        </div>
+    </div>
+</section>
+
+<!-- Get in touch 区域 -->
+<section class="get-in-touch" style="text-align:center;margin:2.5rem 0 3.5rem 0;">
+    <h2 style="font-weight:600;margin-bottom:1.2rem;">Get in touch</h2>
+    <div style="font-size:1.18rem;display:flex;justify-content:center;align-items:center;gap:1.2em;flex-wrap:wrap;">
+        <span style="display:flex;align-items:center;gap:0.3em;">
+            <span style="font-size:1.2em;">&#128231;</span>
+            <span>Send me <a href="mailto:mobius10140@gmail.com" style="color:#1db954;font-weight:500;text-decoration:none;">an email</a></span>
+        </span>
+        <span style="color:#b0b3b8;">|</span>
+        <span style="display:flex;align-items:center;gap:0.3em;">
+            <span style="font-size:1.2em;">&#128188;</span>
+            <span>Contact me on <a href="https://www.linkedin.com/in/jing-yang-553ab2300/" target="_blank" style="color:#1db954;font-weight:500;text-decoration:none;">LinkedIn</a></span>
+        </span>
+        <span style="color:#b0b3b8;">|</span>
+        <span style="display:flex;align-items:center;gap:0.3em;">
+            <span style="font-size:1.2em;">&#128196;</span>
+            <span>View my <a href="/static/cv.pdf" target="_blank" style="color:#1db954;font-weight:500;text-decoration:none;">CV</a></span>
+        </span>
+    </div>
+</section>
+{% endblock %}
+

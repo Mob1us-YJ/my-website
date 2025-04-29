@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+<article class="projects">
+    <h1>Projects</h1>
+    <div class="project-grid">
+        <div class="project-card card">
+            <h3>MindRoll: Distributed Multiplayer Dice Game</h3>
+            <p>Led core logic and system integration in a turn-based dice game using Python and Pygame. Implemented custom RPC, turn synchronization, and fault-tolerant reconnection.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Pygame</span>
+                <span class="tech-tag">RPC</span>
+                <span class="tech-tag">JSON</span>
+                <span class="tech-tag">TCP</span>
+            </div>
+            <span class="year">2025</span>
+        </div>
+        <div class="project-card card">
+            <h3>CPU Design Using Vivado (Digital System Course Design)</h3>
+            <p>Constructed a 32-bit CPU. Programmed instruction set and internal registers in Verilog, implemented arithmetic operations on Xilinx board.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Verilog</span>
+                <span class="tech-tag">Vivado</span>
+                <span class="tech-tag">Digital IC Design</span>
+            </div>
+            <span class="year">2024</span>
+        </div>
+        <div class="project-card card">
+            <h3>Research on the Sweeping Robot based on Optical Positioning Technology (Chinese National Training Program of Innovation)</h3>
+            <p>Created new optical positioning modules and PCBs to apply, developed an open-source robot for autonomous navigation based on optical methods. Tech: Matlab, Arduino, Analog IC design, PCB layout, AOA.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Matlab</span>
+                <span class="tech-tag">Arduino</span>
+                <span class="tech-tag">PCB</span>
+                <span class="tech-tag">AOA</span>
+            </div>
+            <span class="year">2023</span>
+        </div>
+        <div class="project-card card">
+            <h3>Multi-Directional Planar Robot with Edge AI Voice Control (National IoT Contest)</h3>
+            <p>Designed a robot with intelligent voice control using Espressif ESP32 Kit, integrated with the built-in Rainmaker Cloud. Won provincial and national awards.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">C++</span>
+                <span class="tech-tag">ESP32</span>
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">MQTT</span>
+                <span class="tech-tag">IoT</span>
+            </div>
+            <span class="year">2022</span>
+        </div>
+    </div>
+
+    <h1 style="margin-top:3rem;">Publications</h1>
+    <div class="project-grid">
+        <div class="project-card card">
+            <h3>[C.1] An Efficient Visible Light Positioning and Rotation Estimation System Using Two LEDs and a Photodiode Array</h3>
+            <p><strong>Jing Yang</strong>, et al. 2023 IEEE WCNC (Glasgow, UK). DOI: 10.1109/WCNC55385.2023.10118745</p>
+        </div>
+        <div class="project-card card">
+            <h3>[P.1] Receiver Positioning and Rotation Angle Estimation System Based on Photodiode and LED</h3>
+            <p><strong>Bingcheng Zhu, Jing Yang</strong>, et al. Patent: CN115092946A, 2023</p>
+        </div>
+    </div>
+</article>
+{% endblock %}

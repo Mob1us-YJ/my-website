@@ -1,0 +1,36 @@
+[
+    {
+  "title": "Bachelor Thesis: Visible Light Positioning System with Dual LEDs",
+  "description": "Designed and implemented a low-complexity 2D visible light positioning system using dual symmetric LEDs and a photo-diode array. Achieved centimeter-level accuracy with real-time coordinate and rotation estimation.",
+  "tags": ["AOA", "Visible Light Positioning", "Embedded Systems", "Matlab", "Arduino"],
+  "image": "vlp_dual_led.png",
+  "link": "#",
+  "year": 2024
+},
+
+   {
+  "title": "CPU Design Using Vivado",
+  "description": "Designed and implemented a 32-bit CPU with Verilog. Simulated and deployed on Xilinx FPGA.",
+  "tags": ["Verilog", "Vivado", "FPGA", "Digital Design"],
+  "image": "cpu_design.jpg",
+  "link": "#",
+  "year": 2023
+},
+{
+  "title": "Optical Positioning Robot",
+  "description": "Developed an open-source sweeping robot with optical localization system and custom PCB modules.",
+  "tags": ["Matlab", "Arduino", "PCB", "Localization"],
+  "image": "optical_robot.jpg",
+  "link": "#",
+  "year": 2022
+},
+{
+  "title": "Voice-Controlled Planar Robot",
+  "description": "Built an ESP32-based mobile robot with voice control and Edge AI, winning national-level IoT awards.",
+  "tags": ["ESP32", "C++", "TensorFlow", "IoT"],
+  "image": "voice_robot.jpg",
+  "link": "#",
+  "year": 2022
+}
+
+]
