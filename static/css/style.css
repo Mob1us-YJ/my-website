@@ -16,55 +16,129 @@
     --btn-bg: #23262f;
     --btn-hover: #4f8cff;
     --btn-color: #f5f6fa;
+    --bg-primary: #1a1b1e;
+    --bg-secondary: #23262f;
+    --text-primary: #ffffff;
+    --accent-color: #1db954;
+    --header-bg: rgba(35, 38, 47, 0.95);
+}
+
+[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f0f2f5;
+    --text-primary: #1a1b1e;
+    --text-secondary: #65676b;
+    --header-bg: rgba(240, 242, 245, 0.95);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--background-color);
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    line-height: 1.7;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
 }
 
-header, nav {
-    background: var(--nav-bg);
-    color: var(--text-color);
+header {
+    background-color: var(--header-bg);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
 }
 
 nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
     display: flex;
-    justify-content: center;
-    gap: 2rem;
-    padding: 1rem 0;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 nav a {
-    color: var(--text-color);
+    color: var(--text-primary);
     text-decoration: none;
-    font-weight: 600;
-    padding: 0.5rem 1.2rem;
-    border-radius: var(--border-radius);
-    transition: background 0.2s, color 0.2s;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    border-radius: 6px;
+    transition: background-color 0.2s;
 }
-nav a:hover, nav a.active {
-    background: var(--btn-hover);
-    color: #fff;
+
+nav a:hover {
+    background-color: var(--bg-secondary);
+    color: var(--accent-color);
 }
 
 main {
     max-width: 1200px;
-    margin: 2.5rem auto;
-    padding: 0 2rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.tech-tag {
+    display: inline-block;
+    padding: 0.3em 0.8em;
+    margin: 0.2em;
+    background-color: var(--bg-secondary);
+    border-radius: 20px;
+    font-size: 0.9em;
+    color: var(--text-secondary);
 }
 
 footer {
-    background: var(--footer-bg);
-    color: var(--text-secondary);
     text-align: center;
-    padding: 1.5rem 0 1rem 0;
-    margin-top: 2rem;
-    border-top: 1px solid #23262f;
+    padding: 2rem;
+    color: var(--text-secondary);
+    background-color: var(--bg-secondary);
+}
+
+h1, h2, h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.skills-list {
+    background-color: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+    nav {
+        justify-content: center;
+    }
+    
+    .hero {
+        padding: 1rem;
+    }
+    
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
 }
 
 /* ====== 卡片式布局 ====== */
