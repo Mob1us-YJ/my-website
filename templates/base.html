@@ -9,16 +9,33 @@
 </head>
 <body>
     <header>
-        <nav>
-            <a href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a>
-            <a href="{{ url_for('education') }}"><i class="fas fa-graduation-cap"></i> Education</a>
-            <a href="{{ url_for('experience') }}"><i class="fas fa-briefcase"></i> Experience</a>
-            <a href="{{ url_for('projects') }}"><i class="fas fa-project-diagram"></i> Projects</a>
-            <a href="{{ url_for('about') }}"><i class="fas fa-user"></i> About</a>
-            <button id="theme-toggle" style="background:none;border:none;cursor:pointer;font-size:1.3rem;margin-left:1.5rem;vertical-align:middle;">
-                <span id="theme-icon">🌙</span>
-            </button>
+        <nav class="main-nav">
+            <a href="{{ url_for('home') }}" class="nav-logo">
+                <img src="/static/images/logo.png" alt="Logo">
+            </a>
+            <div class="nav-links">
+                <a href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a>
+                <a href="{{ url_for('education') }}"><i class="fas fa-graduation-cap"></i> Education</a>
+                <a href="{{ url_for('experience') }}"><i class="fas fa-briefcase"></i> Experience</a>
+                <a href="{{ url_for('projects') }}"><i class="fas fa-project-diagram"></i> Projects</a>
+                <a href="{{ url_for('about') }}"><i class="fas fa-user"></i> About</a>
+                <button id="theme-toggle" style="background:none;border:none;cursor:pointer;font-size:1.3rem;margin-left:1.5rem;vertical-align:middle;">
+                    <span id="theme-icon">🌙</span>
+                </button>
+            </div>
+            <button class="menu-btn" id="menu-btn" aria-label="Open menu">&#9776;</button>
         </nav>
+        <!-- 移动端抽屉菜单 -->
+        <div class="mobile-menu" id="mobile-menu">
+            <button class="close-btn" id="close-menu" aria-label="Close menu">&times;</button>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('education') }}">Education</a>
+            <a href="{{ url_for('experience') }}">Experience</a>
+            <a href="{{ url_for('projects') }}">Projects</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <button id="theme-toggle-mobile" style="background:none;border:none;cursor:pointer;font-size:1.3rem;margin:1.5rem 0;vertical-align:middle;">🌙</button>
+        </div>
+        <div class="menu-mask" id="menu-mask"></div>
     </header>
 
     <main>
@@ -38,6 +55,9 @@
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
         themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+        if(document.getElementById('theme-toggle-mobile')){
+            document.getElementById('theme-toggle-mobile').textContent = theme === 'dark' ? '🌙' : '☀️';
+        }
     }
     // 初始化主题
     const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -45,6 +65,25 @@
     themeToggle.onclick = function() {
         const current = document.documentElement.getAttribute('data-theme');
         setTheme(current === 'dark' ? 'light' : 'dark');
+    };
+    if(document.getElementById('theme-toggle-mobile')){
+        document.getElementById('theme-toggle-mobile').onclick = function() {
+            const current = document.documentElement.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        };
+    }
+    // 移动端菜单交互
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenu = document.getElementById('close-menu');
+    const menuMask = document.getElementById('menu-mask');
+    menuBtn.onclick = () => {
+        mobileMenu.classList.add('active');
+        menuMask.classList.add('active');
+    };
+    closeMenu.onclick = menuMask.onclick = () => {
+        mobileMenu.classList.remove('active');
+        menuMask.classList.remove('active');
     };
     </script>
     {% block scripts %}{% endblock %}

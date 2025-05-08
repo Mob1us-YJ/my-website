@@ -59,6 +59,7 @@ nav {
     padding: 0 1rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -108,7 +109,8 @@ footer {
 
 h1, h2, h3 {
     color: var(--text-primary);
-    margin-bottom: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
 }
 
 a {
@@ -180,11 +182,6 @@ a:hover {
 }
 
 /* ====== 标题与文本 ====== */
-h1, h2, h3 {
-    color: #fff;
-    font-weight: 700;
-    margin-bottom: 0.7rem;
-}
 h1 {
     font-size: 2.2rem;
 }
@@ -499,22 +496,26 @@ a.read-more:hover, a.see-more:hover {
     flex: 1;
     position: relative;
 }
-.timeline-title-row {
-    display: flex;
-    justify-content: space-between;
+.timeline-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: baseline;
-    flex-wrap: wrap;
-    gap: 1rem;
+    margin-bottom: 0.2rem;
 }
-.timeline-title-row h2 {
+.timeline-title, .timeline-title-row h2 {
     font-size: 1.2rem;
-    margin: 0;
+    font-weight: bold;
     color: #fff;
+    margin: 0;
 }
 .timeline-date {
     color: var(--btn-hover);
     font-size: 1rem;
     font-weight: 600;
+    justify-self: end;
+    text-align: right;
+    min-width: 120px;
+    margin-left: 1.5rem;
 }
 .timeline-subtitle {
     color: var(--text-secondary);
@@ -539,9 +540,31 @@ a.read-more:hover, a.see-more:hover {
 }
 @media (max-width: 700px) {
     .timeline-section { padding: 0.5rem 0 2rem 0; }
-    .timeline { max-width: 98vw; }
-    .timeline-content { padding: 1rem 0.7rem; margin-left: 50px; }
-    .timeline-dot { left: 10px; }
+    .timeline { max-width: 98vw; padding-left: 0; }
+    .timeline:before { left: 18px; }
+    .timeline-item { align-items: flex-start; }
+    .timeline-dot {
+        left: 0;
+        margin-left: 0.5rem;
+        top: 1.1rem;
+    }
+    .timeline-content {
+        margin-left: 40px;
+        padding: 1rem 0.7rem;
+        min-width: 0;
+    }
+    .timeline-header {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+    .timeline-date {
+        justify-self: start;
+        text-align: left;
+        margin-left: 0;
+        margin-top: 0.2rem;
+        min-width: unset;
+        font-size: 0.98rem;
+    }
 }
 
 /* ====== 技能标签优化 ====== */
@@ -570,4 +593,183 @@ a.read-more:hover, a.see-more:hover {
     box-sizing: border-box;
     vertical-align: middle;
     transition: background 0.2s;
+}
+
+/* ====== 移动端抽屉菜单样式 ====== */
+.menu-btn,
+.mobile-menu,
+.menu-mask {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .menu-btn { display: block; }
+  .mobile-menu,
+  .menu-mask { display: none; }
+  .mobile-menu.active { display: flex; }
+  .menu-mask.active { display: block; }
+  .close-btn {
+    background: none; border: none; font-size: 2rem; color: var(--text-primary);
+    align-self: flex-end; margin-bottom: 2rem; cursor: pointer;
+  }
+  .mobile-menu a, .mobile-menu button {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    background: none;
+    border: none;
+    text-align: left;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 2.5rem;
+    right: 1.5rem;
+    width: 85vw;
+    max-width: 320px;
+    background: var(--bg-primary);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    border-radius: 14px;
+    z-index: 2000;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.2rem 0.5rem;
+    animation: slideIn 0.3s;
+  }
+  .mobile-menu.active { display: flex; }
+  .mobile-menu a, .mobile-menu button {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.2rem;
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    background: none;
+    border: none;
+    text-align: left;
+    border-radius: 0;
+    margin: 0;
+    font-weight: 500;
+    transition: background 0.18s;
+  }
+  .mobile-menu a:hover, .mobile-menu button:hover {
+    background: var(--bg-secondary);
+  }
+  .mobile-menu a:not(:last-child), .mobile-menu button:not(:last-child) {
+    border-bottom: 1px solid var(--bg-secondary);
+  }
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-primary);
+    align-self: flex-end;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+}
+@keyframes slideIn {
+  from { right: -100vw; }
+  to { right: 0; }
+}
+
+.card, .timeline-content, .project-card {
+    color: var(--text-primary);
+}
+
+.card h1, .card h2, .card h3, .project-card h1, .project-card h2, .project-card h3, .timeline-content h1, .timeline-content h2, .timeline-content h3 {
+    color: #fff !important;
+}
+
+/* 若 about 页面有自定义深色模块类名，也可加上 */
+.about-section h1, .about-section h2, .about-section h3 {
+    color: #fff !important;
+}
+
+@media (max-width: 700px) {
+  .about-sidebar nav {
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .about-sidebar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+  }
+  .about-nav-link {
+    font-size: 1rem;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    color: var(--text-primary);
+    transition: color 0.2s;
+  }
+  .about-nav-link.active, .about-nav-link:hover {
+    background: none;
+    color: var(--btn-hover);
+    text-decoration: underline;
+  }
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 1.2rem;
+    position: relative;
+}
+.nav-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 1.2rem;
+    padding: 0;
+}
+.nav-logo img {
+    height: 38px;
+    width: auto;
+    display: block;
+}
+.nav-links {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu-btn {
+    font-size: 2.1rem;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: none;
+    margin-left: auto;
+}
+@media (max-width: 700px) {
+    .main-nav {
+        padding: 0 0.7rem;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+    }
+    .nav-logo {
+        margin-right: 0;
+        flex: 0 0 auto;
+    }
+    .nav-logo img {
+        height: 30px;
+    }
+    .nav-links {
+        display: none;
+    }
+    .menu-btn {
+        display: block;
+        font-size: 2.1rem;
+        margin-left: 0;
+        flex: 0 0 auto;
+    }
 }
