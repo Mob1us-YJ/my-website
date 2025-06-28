@@ -6,6 +6,27 @@
 <article class="projects">
     <h1>Projects</h1>
     <div class="project-grid">
+        <div class="project-card card" onclick="window.open('https://storymaps.arcgis.com/stories/5b47c08ba64646b7a96b91af746d0ad0','_blank')" style="cursor:pointer;">
+            <h3>IEEE Maritime25: Distributed Multi-Vessel Autonomous Control System</h3>
+            <p>The Maritime25 project pioneers a distributed, multi-vessel autonomous control system designed for intelligent patrolling, environmental monitoring, and rapid emergency response in complex water environments. Leveraging Python and ArduPilot, the system integrates IoT, autonomous navigation, and distributed control technologies to enable real-time task assignment, formation coordination, and remote supervision of multiple unmanned surface vessels (USVs). A lightweight MQTT-based message bus and custom JSON+MAVLink protocol ensure robust command dispatch, telemetry streaming, and "follow-the-leader" cluster coordination, supporting reliable and flexible deployment in dynamic scenarios.<br><br>In real-world applications, Maritime25 has been deployed for water quality sampling, target tracking, and emergency drills across lakes and rivers, demonstrating the transformative potential of USV swarms in smart water management. The system seamlessly switches between SITL simulation and Raspberry Pi + Pixhawk hardware, featuring fault-tolerant reconnection, mission recovery, and configurable QoS to adapt to unstable networks. Integrated backend (DroneKit) and frontend (MAVProxy/Mission Planner) streamline operations and mission execution.<br><br>For a detailed project story and application showcase, see the <a href="https://storymaps.arcgis.com/stories/5b47c08ba64646b7a96b91af746d0ad0" target="_blank" style="color:#1db954;text-decoration:underline;">StoryMap report</a>.</p>
+            <ul style="margin:0 0 1em 1.2em;font-size:0.98em;color:var(--text-secondary);">
+                <li>Distributed Control: Custom MQTT+JSON protocol for synchronized multi-vessel missions and cluster coordination.</li>
+                <li>Scenario Adaptability: Supports autonomous patrolling and task execution in lakes, rivers, and diverse water bodies.</li>
+                <li>Fault Tolerance: Reconnection and state recovery mechanisms ensure stable operation in challenging environments.</li>
+                <li>Integrated Solution: Unified backend logic (DroneKit) and ground station (MAVProxy) for seamless operation.</li>
+                <li>Autonomous Features: Implements "follow-the-leader" formation and automated mission management for USV clusters.</li>
+            </ul>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">ArduPilot</span>
+                <span class="tech-tag">MQTT</span>
+                <span class="tech-tag">MAVLink</span>
+                <span class="tech-tag">DroneKit</span>
+                <span class="tech-tag">Raspberry Pi</span>
+                <span class="tech-tag">Pixhawk</span>
+            </div>
+            <span class="year">2025</span>
+        </div>
         <div class="project-card card">
             <h3>MindRoll: Distributed Multiplayer Dice Game</h3>
             <p>Led core logic and system integration in a turn-based dice game using Python and Pygame. Designed and implemented a custom RPC protocol for real-time communication between players, ensuring robust turn synchronization and fault-tolerant reconnection. The project features a modular architecture, supports dynamic player joining, and provides a smooth multiplayer experience even under unstable network conditions. Responsible for both backend logic and user interface, focusing on user experience and system reliability.</p>
